@@ -1,0 +1,20 @@
+extends ../shared/template
+
+block content
+  h1 Songs
+
+  table
+    thead
+      th Delete
+      th Song
+      th Play
+    tbody
+      each song in songs
+        tr
+          td
+            form(method='POST', action='/songs/#{song._id}')
+              input(type='hidden', name='_method', value='DELETE')
+              button.button.button-caution Delete
+          td= song.name
+          td(style='width:200px; height:200px')
+            audio(src='/data/song/#{song._id}/#{song.file}' controls=true)

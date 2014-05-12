@@ -1,0 +1,28 @@
+extends ../shared/template
+
+block content
+  .well
+    .row
+      .col-md-4
+        .thumbnail
+          img(src='/data/artist/#{artist._id}/#{artist.photo}')
+          .caption
+            h1.media-heading #{artist.name}
+      .col-md-8
+        #accordian.panel-group
+          h4 Albums
+          each album in albums
+            .panel.panel-primary
+              .panel-heading
+                h4.panel-title
+                  a(data-toggle='collapse' data-parent='#accordion' href='##{album._id}')
+                    span.fa.fa-plus-circle(style='margin-right:2px')
+                    span= album.name
+              div.panel-collapse.collapse(id='#{album._id}')
+                .panel-body
+                  if album.songs.length > 0
+                    ul
+                      each song in album.songs
+                        li
+                           span(style='margin-right:2px')= song.name
+                           audio(src='/data/song/#{song._id}/#{song.file}' controls=true)

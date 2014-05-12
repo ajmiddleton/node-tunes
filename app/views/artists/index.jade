@@ -1,0 +1,17 @@
+extends ../shared/template
+
+block content
+  h1 Artists
+
+  .row
+    each artist in artists
+      .col-sm-6.col-md-4
+        .thumbnail
+          img(src='/data/artist/#{artist._id}/#{artist.photo}')
+          .caption
+            h3 #{artist.name}
+            p
+              a.button.button-primary(href='/artists/#{artist._id}/show') Show Artist
+              form(method='POST', action='/artists/#{artist._id}')
+                input(type='hidden', name='_method', value='DELETE')
+                button.button.button-caution Delete

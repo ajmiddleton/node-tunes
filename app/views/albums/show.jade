@@ -1,0 +1,18 @@
+extends ../shared/template
+
+block content
+  .well
+    .row
+      .col-md-4
+        .thumbnail
+          img(src='/data/album/#{album._id}/#{album.photo}')
+          .caption
+            h1.media-heading #{album.name}
+      .col-md-8
+        h4 Songs
+        if album.songs.length > 0
+          ul
+            each song in album.songs
+              li
+               span(style='margin-right:2px')= song.name
+               audio(src='/data/song/#{song._id}/#{song.file}' controls=true)

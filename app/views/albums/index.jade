@@ -1,0 +1,16 @@
+extends ../shared/template
+
+block content
+  h1 Albums
+    .row
+      each album in albums
+        .col-sm-6.col-md-4
+          .thumbnail
+            img(src='/data/album/#{album._id}/#{album.photo}')
+            .caption
+              h3 #{album.name}
+              p
+                a.button.button-primary(href='/albums/#{album._id}/show') Show Album
+                form(method='POST', action='/albums/#{album._id}')
+                  input(type='hidden', name='_method', value='DELETE')
+                  button.button.button-caution Delete

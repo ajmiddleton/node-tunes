@@ -5,8 +5,51 @@ html
     title= title
     link(href='/css/normalize.css', rel='stylesheet')
     link(href='/css/buttons.css', rel='stylesheet')
+    link(rel='stylesheet', href='//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css')
+    link(href='/less/sidebar.css', rel='stylesheet')
     link(href='/less/app.css', rel='stylesheet')
   body
+    .navbar.navbar-inverse.navbar-twitch(role='navigation')
+      .container
+        .navbar-header
+          a.navbar-brand(href='#')
+            span.small-nav
+              span.logo
+                b
+            span.full-nav
+              bootsnipp
+        //div
+        ul.nav.navbar-nav
+          li
+            a(href='/')
+              span.small-nav(data-toggle='tooltip', data-placement='right', title='Home')
+                span.glyphicon.glyphicon-home
+              span.full-nav  Home
+          li
+            a(href='/new')
+              span.small-nav(data-toggle='tooltip', data-placement='right', title='Add New')
+                span.fa.fa-plus-circle(style='padding-left:2px')
+              span.full-nav Add New
+          li
+            a(href='/artists')
+              span.small-nav(data-toggle='tooltip', data-placement='right', title='Artists')
+                span.fa.fa-users
+              span.full-nav  Artists
+          li
+            a(href='/albums')
+              span.small-nav(data-toggle='tooltip', data-placement='right', title='Albums')
+                span.fa.fa-book
+              span.full-nav  Albums
+          li
+            a(href='/songs')
+              span.small-nav(data-toggle='tooltip', data-placement='right', title='Songs')
+                span.fa.fa-music
+              span.full-nav Songs
+    button.btn.btn-default.btn-xs.navbar-twitch-toggle(type='button')
+      span.glyphicon.glyphicon-chevron-right.nav-open
+      span.glyphicon.glyphicon-chevron-left.nav-close
+
+
     block content
 
     script(src='/js/vendor/jquery-2.1.1.js')
@@ -15,6 +58,7 @@ html
     script(src='/js/vendor/buttons.js')
     script(src='/js/vendor/traceur.js')
     script(src='/js/es5/main.js')
+    script(src='//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js')
     script(src='/js/es6/compiled/main.js')
 
     block scripts

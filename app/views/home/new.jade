@@ -1,0 +1,53 @@
+extends ../shared/template
+
+block content
+  h1 Add New Content
+
+  #accordion.panel-group
+    .panel.panel-success
+      .panel-heading
+        h4.panel-title
+          a(data-toggle='collapse' data-parent='#accordion' href='#newArtist')
+            span.fa.fa-plus-circle(style='margin-right:2px')
+            span New Artist
+      #newArtist.panel-collapse.collapse
+        .panel-body
+          form.form-inline(method='POST', action='/artists', enctype='multipart/form-data')
+            input.form-control(name='name' type='text' placeholder='Name')
+            input.form-control(name='photo' type='file' multiple=true)
+            button.button.button-action Add
+
+    .panel.panel-success
+      .panel-heading
+        h4.panel-title
+          a(data-toggle='collapse' data-parent='#accordion' href='#newAlbum')
+            span.fa.fa-plus-circle(style='margin-right:2px')
+            span New Album
+      #newAlbum.panel-collapse.collapse
+        .panel-body
+          form.form-inline(method='POST', action='/albums', enctype='multipart/form-data')
+            select.form-control(name='artistId')
+              each artist in artists
+                option(value='#{artist._id}') #{artist.name}
+            input.form-control(name='name' type='text' placeholder='Name')
+            input.form-control(name='photo' type='file' multiple=true)
+            button.button.button-action Add
+
+    .panel.panel-success
+      .panel-heading
+        h4.panel-title
+          a(data-toggle='collapse' data-parent='#accordion' href='#newSong')
+            span.fa.fa-plus-circle(style='margin-right:2px')
+            span New Song
+      #newSong.panel-collapse.collapse
+        .panel-body
+          form.form-inline(method='POST', action='/songs', enctype='multipart/form-data')
+            select.form-control(name='artistId')
+              each artist in artists
+                option(value='#{artist._id}') #{artist.name}
+            select.form-control(name='albumId')
+              each album in albums
+                option(value='#{album._id}') #{album.name}
+            input.form-control(name='name' type='text' placeholder='Name')
+            input.form-control(name='song' type='file' multiple=true)
+            button.button.button-action Add
